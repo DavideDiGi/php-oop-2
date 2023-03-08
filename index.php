@@ -12,8 +12,15 @@ $categoriaGatti = new Categoria('😼', 'Gatti');
 $prodotti = [];
 
 $prodotti[] = new Cibo($categoriaGatti, 'Whiskas 1+ lattine 24 x 400 g', 'Alimento umido per gatti adulti, con carne fresca, del tutto privo di coloranti e aromi artificiali, senza zuccheri aggiunti, in tante prelibate varianti - in conveniente set risparmio da 24 x 400 g', 173, 'https://shop-cdn-m.mediazs.com/bilder/whiskas/lattine/x/g/3/400/cans_24_1000x1000_3.jpg', 2.99, 24, '30/08/2023');
-$prodotti[] = new Gioco($categoriaCani, 'Giocattolo KONG Goodie Bone S', 'Gioco KONG Goodie Bone, osso in caucciù naturale da masticare per cani fino a 9 kg, materiale robusto per un passatempo che dura a lungo, con Goodie Grippers™ alle due estremità da riempire con snack.', 112, 'https://shop-cdn-m.mediazs.com/bilder/kong/goodie/bone/s/2/400/219797_kong_goodie_bone_hs_04_2.jpg', 5.69, 8, 'Gomma');
-$prodotti[] = new Cuccia($categoriaCani, 'Cuccia per cani Spike Classic', ' Cuccia per cani Spike Classic, in legno di cipresso di Cunningham oleato, con tetto in cartone bitumato a spioventi. Piedini regolabili in altezza, ideale in caso di pioggia, facile da montare.', 298, 'https://shop-cdn-m.mediazs.com/bilder/cuccia/per/cani/spike/classic/1/400/icon_topseller_1_56__1.jpg', 27.89, 3, 'Cane Adulto');
+$prodotti[] = new Gioco($categoriaCani, 'Giocattolo KONG Goodie Bone S', 'Gioco KONG Goodie Bone, osso in caucciù naturale da masticare per cani fino a 9 kg, materiale robusto per un passatempo che dura a lungo, con Goodie Grippers™ alle due estremità da riempire con snack.', 112, 'https://shop-cdn-m.mediazs.com/bilder/kong/goodie/bone/s/2/400/219797_kong_goodie_bone_hs_04_2.jpg', 5.69, 18, 'Gomma');
+// $prodotti[] = new Cuccia($categoriaCani, 'Cuccia per cani Spike Classic', ' Cuccia per cani Spike Classic, in legno di cipresso di Cunningham oleato, con tetto in cartone bitumato a spioventi. Piedini regolabili in altezza, ideale in caso di pioggia, facile da montare.', 298, 'https://shop-cdn-m.mediazs.com/bilder/cuccia/per/cani/spike/classic/1/400/icon_topseller_1_56__1.jpg', 27.89, 3, 'Cane Adulto');
+$prodotto5 = $prodotti[] = new Cuccia($categoriaCani, 'Cuccia per cani Spike Classic', ' Cuccia per cani Spike Classic, in legno di cipresso di Cunningham oleato, con tetto in cartone bitumato a spioventi. Piedini regolabili in altezza, ideale in caso di pioggia, facile da montare.', 298, 'https://shop-cdn-m.mediazs.com/bilder/cuccia/per/cani/spike/classic/1/400/icon_topseller_1_56__1.jpg', 27.89, 3, 'Cane Adulto');
+
+try {
+    $prodotto5->acquista(1);
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
 
 ?>
 
@@ -89,8 +96,10 @@ $prodotti[] = new Cuccia($categoriaCani, 'Cuccia per cani Spike Classic', ' Cucc
                                 ?>
                                 <div class="text-danger">Scorte rimaste: <?php echo $prodotto->n_scorte; ?></div>
 
-                                <a href="#" class="btn btn-primary mt-2 float-end">Vedi il prodotto</a>
-
+                                <div class="d-flex align-items-center mt-2 justify-content-between">
+                                    <div class="review">Voto medio recensioni: <?php echo $prodotto->stampVoto(4) ?></div>
+                                    <a href="#" class="btn btn-primary">Vedi il prodotto</a>
+                                </div>
                             </div>
 
                         </div>
@@ -102,10 +111,11 @@ $prodotti[] = new Cuccia($categoriaCani, 'Cuccia per cani Spike Classic', ' Cucc
                 ?>
 
             </div>
-
         </div>
     </main>
 
 </body>
 
 </html>
+
+<!-- oggi continuate a lavorare nella stessa repo di ieri aggiungendo almeno un trait ed un exception al vostro shop! -->
